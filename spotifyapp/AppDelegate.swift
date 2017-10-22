@@ -12,11 +12,35 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var auth = SPTAuth()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
+        auth.redirectURL = URL(string: "spotifyapp://returnafterlogin")
+        auth.sessionUserDefaultsKey = "current session"
+
         return true
+    }
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+
+        if auth.canHandle(auth.redirectURL) {
+            auth.handleAuthCallback(withTriggeredAuthURL: url, callback: {
+                (err, session) in
+
+                if (err != nil) {
+                    print("Error: \(err!)")
+                }
+
+                let sessionData = NSKeyedArchiver.archivedData(withRootObject: session!)
+                UserDefaults.standard.set(sessionData, forKey: "spotifySession")
+                UserDefaults.standard.synchronize()
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "LogginSuccefull"), object: nil)
+            })
+            return true
+        }
+        return false
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

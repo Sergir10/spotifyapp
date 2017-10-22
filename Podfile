@@ -6,9 +6,9 @@ target 'spotifyapp' do
   use_frameworks!
 
   # Pods for spotifyapp
-  pod 'Alamofire', '~> 4.5'
+  pod 'Alamofire'
   pod 'SwiftyJSON'
-  pod 'Kingfisher', '~> 3.13.1'
+  pod 'Kingfisher'
 end
 
 workspace 'spotifyapp'

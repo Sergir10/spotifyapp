@@ -73,7 +73,7 @@ class RemoteSpotifyServices {
                                 for country in avaibleMarkets {
                                     countries += "\(country.rawString()!)-"
                                 }
-                                countries = countries.substring(to: countries.index(before: countries.endIndex))
+                                countries = String(countries[..<countries.index(countries.endIndex, offsetBy: -1)])
                                 album["avaibleMarkets"] = countries
                             }
                             album["image"] = item["images"][0]["url"].stringValue

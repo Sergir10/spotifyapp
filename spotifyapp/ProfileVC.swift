@@ -157,7 +157,7 @@ class ProfileVC: UIViewController, UISearchBarDelegate, UITableViewDelegate, UIT
         })
     }
 
-    func hideKeyboard() {
+    @objc func hideKeyboard() {
         self.artistSearchBar.resignFirstResponder()
         self.view.removeGestureRecognizer(self.touchGesture)
     }

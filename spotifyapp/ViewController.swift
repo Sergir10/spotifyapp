@@ -73,7 +73,7 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
         }
     }
 
-    func afterLogin() {
+    @objc func afterLogin() {
         if let _: AnyObject = UserDefaults.standard.object(forKey: "spotifySession") as AnyObject? {
             let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let nextVC: UIViewController = storyBoard.instantiateViewController(withIdentifier: "ProfileVC")

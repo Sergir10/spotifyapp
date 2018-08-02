@@ -2,6 +2,3 @@
 
 import UIKit
 
-var str = "Hello, playground-"
-
-str = String(str[..<str.index(str.endIndex, offsetBy: -1)])

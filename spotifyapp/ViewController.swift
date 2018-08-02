@@ -31,19 +31,13 @@ class ViewController: UIViewController, SPTAudioStreamingPlaybackDelegate, SPTAu
     // MARK: Functions
     //--------------------------------------
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    override func loadView() {
+        super.loadView()
         NotificationCenter.default.addObserver(self, selector: #selector(ViewController.afterLogin), name: NSNotification.Name(rawValue: "LogginSuccefull"), object: nil)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         settings()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     func settings(){

@@ -31,6 +31,9 @@ class AlbumVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor.black
+        self.navigationController?.navigationBar.tintColor = UIColor(red:0.11, green:0.73, blue:0.33, alpha:1.0)
     }
 
     override func viewWillAppear(_ animated: Bool) {
